@@ -1,4 +1,5 @@
 #include "game.h"
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -42,5 +43,21 @@ void compransion(Num user_number, Num random_number, Score* score)
                 break;
             }
         }
+    }
+}
+
+void game()
+{
+    Num number;
+    Num rand_number;
+    Score score;
+    generate(&rand_number);
+    while (true) {
+        input(&number);
+        compransion(number, rand_number, &score);
+        printf("cow = %d\nbulls = %d", score.cow, score.bulls);
+        score.bulls = 0;
+        score.cow = 0;
+        printf("\n%d\n", rand_number.number);
     }
 }
