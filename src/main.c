@@ -1,7 +1,8 @@
+#include "game.h"
 #include <stdio.h>
 
 int main()
 {
-    printf("Hello world!\n");
+    game();
     return 0;
 }
