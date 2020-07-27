@@ -2,25 +2,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void input(int* number)
+void input(Num* user_number)
 {
     printf("Введите число:\n");
-    scanf("%d", number);
+    scanf("%d", &user_number->number);
+    split(user_number);
 }
 
-int generate()
+void generate(Num* generate_number)
 {
-    int generate_number;
-    generate_number = rand() % 9000 + 1000;
-    return generate_number;
+    generate_number->number = rand() % 9000 + 1000;
+    split(generate_number);
 }
 
-void split(int* split_number, int number)
+void split(Num* number)
 {
     int index = MAX_INDEX;
-    while (number) {
-        split_number[index] = number % 10;
-        number /= 10;
+    while (number->number) {
+        printf("%d\n", number->number);
+        number->split_number[index] = number->number % 10;
+        number->number /= 10;
         index--;
     }
 }
