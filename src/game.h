@@ -8,6 +8,11 @@ typedef struct{
     int split_number[MAX_LENGTH];
 }Num;
 
+typedef struct{
+    int bow;
+    int cow;
+}Score;
+
 void input(Num* user_number);
 void generate(Num* generate_number);
 void split(Num* number);
