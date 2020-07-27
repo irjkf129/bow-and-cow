@@ -18,5 +18,6 @@ void generate(Num* generate_number);
 void split(int* split_number, int number);
 void compransion(Num user_number, Num random_number, Score* score);
 void game();
+void output(Score* score);
 
 #endif

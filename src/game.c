@@ -53,11 +53,21 @@ void game()
     Score score;
     generate(&rand_number);
     while (true) {
-        input(&number);
-        compransion(number, rand_number, &score);
-        printf("cow = %d\nbulls = %d", score.cow, score.bulls);
         score.bulls = 0;
         score.cow = 0;
-        printf("\n%d\n", rand_number.number);
+        input(&number);
+        compransion(number, rand_number, &score);
+        output(&score);
+        if (score.bulls == MAX_LENGTH) {
+            return;
+        }
+    }
+}
+
+void output(Score* score)
+{
+    printf("cow = %d\nbulls = %d\n", score->cow, score->bulls);
+    if (score->bulls == MAX_LENGTH) {
+        printf("You win!!\n");
     }
 }
