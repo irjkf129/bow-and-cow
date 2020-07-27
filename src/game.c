@@ -6,22 +6,41 @@ void input(Num* user_number)
 {
     printf("Введите число:\n");
     scanf("%d", &user_number->number);
-    split(user_number);
+    split(user_number->split_number, user_number->number);
 }
 
 void generate(Num* generate_number)
 {
     generate_number->number = rand() % 9000 + 1000;
-    split(generate_number);
+    split(generate_number->split_number, generate_number->number);
 }
 
-void split(Num* number)
+void split(int* split_number, int number)
 {
     int index = MAX_INDEX;
-    while (number->number) {
-        printf("%d\n", number->number);
-        number->split_number[index] = number->number % 10;
-        number->number /= 10;
+    while (number) {
+        split_number[index] = number % 10;
+        number /= 10;
         index--;
+    }
+}
+
+void compransion(Num user_number, Num random_number, Score* score)
+{
+    for (int i = 0; i < MAX_LENGTH; i++) {
+        if (user_number.split_number[i] == random_number.split_number[i]) {
+            score->bulls++;
+            random_number.split_number[i] = -1;
+        }
+    }
+    for (int i = 0; i < MAX_LENGTH; i++) {
+        for (int j = 0; j < MAX_LENGTH; j++) {
+            if (user_number.split_number[i] == random_number.split_number[j]
+                && i != j) {
+                score->cow++;
+                random_number.split_number[j] = -1;
+                break;
+            }
+        }
     }
 }

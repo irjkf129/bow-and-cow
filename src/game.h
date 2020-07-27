@@ -9,12 +9,13 @@ typedef struct{
 }Num;
 
 typedef struct{
-    int bow;
+    int bulls;
     int cow;
 }Score;
 
 void input(Num* user_number);
 void generate(Num* generate_number);
-void split(Num* number);
+void split(int* split_number, int number);
+void compransion(Num user_number, Num random_number, Score* score);
 
 #endif
